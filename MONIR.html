@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRIME MONIR BAI | HACKER HUD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+        body {
+            background-color: #000;
+            color: #00f7ff;
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ব্যাকগ্রাউন্ড ম্যাট্রিক্স */
+        #matrix {
+            position: fixed;
+            top: 0; left: 0; z-index: -1;
+            opacity: 0.2;
+        }
+
+        /* ১. দুই লাইনে বড় নাম */
+        .name-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .name-prime {
+            font-size: clamp(3rem, 12vw, 6rem);
+            font-weight: 900;
+            letter-spacing: 20px;
+            text-shadow: 0 0 20px #00f7ff, 0 0 50px #00f7ff;
+            display: block;
+        }
+
+        .name-monir {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            letter-spacing: 10px;
+            color: #fff;
+            text-shadow: 0 0 15px #00f7ff;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* ২. মাঝখানে হ্যাকিং বক্স */
+        .hacking-box {
+            width: 90%;
+            max-width: 850px;
+            border: 2px solid #00f7ff;
+            background: rgba(0, 20, 20, 0.85);
+            padding: 25px;
+            box-shadow: inset 0 0 20px rgba(0, 247, 255, 0.3), 0 0 15px rgba(0, 247, 255, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .about-header {
+            text-align: center;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #00f7ff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            letter-spacing: 5px;
+            color: #00FF41;
+        }
+
+        #typewriter {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            min-height: 300px;
+            color: #00f7ff;
+        }
+
+        /* ৩. বাক্সের নিচে আইডিগুলো */
+        .contact-area {
+            width: 90%;
+            max-width: 850px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .id-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #00f7ff;
+            padding: 12px 20px;
+            background: rgba(0, 247, 255, 0.05);
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .id-card:hover {
+            background: #00f7ff;
+            color: #000;
+            box-shadow: 0 0 25px #00f7ff;
+        }
+
+        .id-card img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .whatsapp-full {
+            grid-column: span 2;
+            border-color: #25D366;
+            color: #25D366;
+        }
+        
+        .whatsapp-full:hover {
+            background: #25D366;
+            color: #000;
+            box-shadow: 0 0 25px #25D366;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.1rem;
+            background: #00f7ff;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix"></canvas>
+
+    <div class="name-container">
+        <span class="name-prime">PRIME</span>
+        <span class="name-monir">MONIR BAI</span>
+    </div>
+
+    <div class="hacking-box">
+        <div class="about-header">>> DATABASE ACCESS <<</div>
+        <div id="typewriter"></div>
+        <span class="cursor"></span>
+    </div>
+
+    <div class="contact-area">
+        <a href="https://facebook.com/200monir" class="id-card" target="_blank">
+            <span>FACEBOOK</span>
+            <img src="https://img.icons8.com/color/48/facebook-new.png" alt="FB">
+        </a>
+
+        <a href="https://t.me/Monirprime" class="id-card" target="_blank">
+            <span>TELEGRAM</span>
+            <img src="https://img.icons8.com/color/48/telegram-app.png" alt="TG">
+        </a>
+
+        <a href="https://wa.me/8801968491647" class="id-card whatsapp-full" target="_blank">
+            <span>WHATSAPP [ENCRYPTED]</span>
+            <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WA">
+        </a>
+    </div>
+
+    <script>
+        // Matrix Effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const alphabet = "010101PRIMEHACKER777#@$";
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const rainDrops = Array.from({ length: columns }).fill(1);
+
+        function draw() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00f7ff";
+            ctx.font = fontSize + "px monospace";
+            rainDrops.forEach((y, i) => {
+                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+                ctx.fillText(text, i * fontSize, y * fontSize);
+                if (y * fontSize > canvas.height && Math.random() > 0.975) rainDrops[i] = 0;
+                rainDrops[i]++;
+            });
+        }
+        setInterval(draw, 30);
+
+        // Typing Content
+        const lines = [
+            ">_ Welcome to the World of Prime Monir Vai",
+            ">_ Cyber Security Expert & Ethical Hacker",
+            ">_ Professional Web Developer & Programmer",
+            ">_ Skills: [Hacking, Coding, Security]",
+            "   >>> Penetration Testing | Web Hacking",
+            "   >>> HTML | CSS | JS | Python | C++",
+            "   >>> Ethical Hacking | SEO Expert",
+            ">_ Mission: Securing the Digital Frontier",
+            ">_ Motto: 'Hack the System, Secure the World.'",
+            ">_ Status: Online ✅ | Available for Projects",
+            ">_ System Breach: Successful",
+            ">_ Contact Me Below to Join My Journey!"
+        ];
+
+        const output = document.getElementById('typewriter');
+        let l = 0, c = 0;
+
+        function type() {
+            if (l < lines.length) {
+                if (c < lines[l].length) {
+                    output.innerHTML += lines[l].charAt(c);
+                    c++;
+                    setTimeout(type, 30);
+                } else {
+                    output.innerHTML += "<br>";
+                    l++;
+                    c = 0;
+                    setTimeout(type, 600);
+                }
+            }
+        }
+        setTimeout(type, 1000);
+    </script>
+</body>
+</html>
