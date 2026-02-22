@@ -1,236 +1,234 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRIME MONIR BAI | HACKER HUD</title>
+    <title>PRIME MONIR VAI | OMNI_CORE_SYSTEM_V4</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-
-        body {
-            background-color: #000;
-            color: #00f7ff;
-            font-family: 'Share Tech Mono', monospace;
-            margin: 0;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ব্যাকগ্রাউন্ড ম্যাট্রিক্স */
-        #matrix {
-            position: fixed;
-            top: 0; left: 0; z-index: -1;
-            opacity: 0.2;
-        }
-
-        /* ১. দুই লাইনে বড় নাম */
-        .name-container {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            line-height: 0.9;
-        }
-
-        .name-prime {
-            font-size: clamp(3rem, 12vw, 6rem);
-            font-weight: 900;
-            letter-spacing: 20px;
-            text-shadow: 0 0 20px #00f7ff, 0 0 50px #00f7ff;
-            display: block;
-        }
-
-        .name-monir {
-            font-size: clamp(2rem, 8vw, 4rem);
-            font-weight: 700;
-            letter-spacing: 10px;
-            color: #fff;
-            text-shadow: 0 0 15px #00f7ff;
-            display: block;
-            margin-top: 10px;
-        }
-
-        /* ২. মাঝখানে হ্যাকিং বক্স */
-        .hacking-box {
-            width: 90%;
-            max-width: 850px;
-            border: 2px solid #00f7ff;
-            background: rgba(0, 20, 20, 0.85);
-            padding: 25px;
-            box-shadow: inset 0 0 20px rgba(0, 247, 255, 0.3), 0 0 15px rgba(0, 247, 255, 0.2);
-            margin-bottom: 30px;
-        }
-
-        .about-header {
-            text-align: center;
-            font-size: 1.5rem;
-            border-bottom: 1px solid #00f7ff;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            letter-spacing: 5px;
-            color: #00FF41;
-        }
-
-        #typewriter {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            min-height: 300px;
-            color: #00f7ff;
-        }
-
-        /* ৩. বাক্সের নিচে আইডিগুলো */
-        .contact-area {
-            width: 90%;
-            max-width: 850px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .id-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border: 2px solid #00f7ff;
-            padding: 12px 20px;
-            background: rgba(0, 247, 255, 0.05);
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-
-        .id-card:hover {
-            background: #00f7ff;
-            color: #000;
-            box-shadow: 0 0 25px #00f7ff;
-        }
-
-        .id-card img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .whatsapp-full {
-            grid-column: span 2;
-            border-color: #25D366;
-            color: #25D366;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Share+Tech+Mono&display=swap');
         
-        .whatsapp-full:hover {
-            background: #25D366;
-            color: #000;
-            box-shadow: 0 0 25px #25D366;
+        :root { --neon: #00ff41; --danger: #ff0000; --cyan: #00ffff; --gold: #ffd700; --bg: #000; }
+        
+        body, html { margin: 0; padding: 0; background: var(--bg); color: var(--neon); font-family: 'Share Tech Mono', monospace; overflow: hidden; height: 100vh; }
+
+        /* RELENTLESS CODING RAIN */
+        #matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.7; }
+
+        .omniforce-ui { display: flex; flex-direction: column; height: 100vh; padding: 10px; box-sizing: border-box; }
+
+        /* Top Hacking Header */
+        .header-bar { display: flex; justify-content: space-between; border-bottom: 2px solid var(--danger); padding: 5px; font-size: 14px; background: rgba(20,0,0,0.8); box-shadow: 0 0 25px rgba(255,0,0,0.5); font-family: 'Orbitron', sans-serif; }
+
+        /* PRIME MONIR VAI CORE PROFILE */
+        .core-master-section { display: flex; flex-direction: column; align-items: center; margin-top: 15px; }
+        .orbital-frame { position: relative; width: 230px; height: 230px; display: flex; align-items: center; justify-content: center; }
+        
+        /* HD Profile Image - No Filters */
+        .profile-img { 
+            width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--neon); 
+            z-index: 10; object-fit: cover; box-shadow: 0 0 50px var(--neon); 
+            filter: none; /* Ensure no unwanted filters */
         }
 
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.1rem;
-            background: #00f7ff;
-            animation: blink 0.7s infinite;
+        /* Dynamic Orbital Scanners */
+        .scanner { position: absolute; border-radius: 50%; border: 2px solid transparent; animation: rotate 3s linear infinite; }
+        .s1 { width: 180px; height: 180px; border-top: 5px solid var(--cyan); }
+        .s2 { width: 210px; height: 210px; border-bottom: 4px solid var(--danger); animation-duration: 2s; }
+        .s3 { width: 240px; height: 240px; border-left: 3px dashed var(--gold); animation-duration: 5s; }
+        .s4 { width: 270px; height: 270px; border-right: 2px solid var(--neon); animation-duration: 8s; opacity: 0.3;}
+        
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .monir-signature { 
+            font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 900; 
+            color: #fff; letter-spacing: 10px; margin: 15px 0; 
+            text-shadow: 0 0 20px var(--cyan), 0 0 40px var(--danger); 
         }
+
+        /* QUANTUM SOCIAL COMMANDS */
+        .social-command-center { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 550px; margin-bottom: 20px; }
+        .command-btn { 
+            text-decoration: none; color: #fff; background: rgba(0, 0, 0, 0.8); 
+            border: 2px solid var(--neon); padding: 15px; font-size: 14px; 
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: 0.3s; clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+            font-family: 'Orbitron', sans-serif;
+        }
+        .command-btn:hover { background: var(--danger); color: #fff; box-shadow: 0 0 30px var(--danger); transform: scale(1.05) skewX(-5deg); }
+
+        /* THREE DANGEROUS TOOLS */
+        .tool-suite { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: 100%; max-width: 550px; margin-bottom: 20px; }
+        .tool-module { 
+            background: rgba(0, 50, 0, 0.7); border: 2px solid var(--cyan); padding: 15px; 
+            text-align: center; font-size: 13px; cursor: pointer; transition: 0.3s;
+            clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%);
+            font-family: 'Orbitron', sans-serif; font-weight: bold;
+        }
+        .tool-module:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px var(--gold); transform: scale(1.05); }
+
+        /* Infinite Hacking Terminal */
+        .terminal-feed { 
+            flex-grow: 1; background: rgba(0, 10, 0, 0.98); border: 3px solid var(--neon); 
+            position: relative; overflow: hidden; display: flex; flex-direction: column;
+            border-radius: 8px; box-shadow: inset 0 0 50px rgba(0,255,65,0.3);
+        }
+        .terminal-header-line { background: var(--neon); color: #000; padding: 5px 15px; font-size: 12px; font-weight: bold; display: flex; justify-content: space-between; }
+        .terminal-body { padding: 15px; font-size: 14px; color: var(--neon); line-height: 1.5; overflow-y: scroll; scrollbar-width: none; /* Firefox */ -ms-overflow-style: none; /* IE and Edge */ }
+        .terminal-body::-webkit-scrollbar { display: none; /* Chrome, Safari, Opera */ }
+        
+        .cursor { display: inline-block; width: 8px; height: 18px; background: var(--neon); animation: blink 0.5s infinite; vertical-align: bottom; margin-left: 5px; }
         @keyframes blink { 50% { opacity: 0; } }
 
+        /* Scanline Overlay */
+        .scanline-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.05), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.05)); background-size: 100% 4px, 4px 100%; pointer-events: none; }
     </style>
 </head>
 <body>
 
-    <canvas id="matrix"></canvas>
+<canvas id="matrix"></canvas>
 
-    <div class="name-container">
-        <span class="name-prime">PRIME</span>
-        <span class="name-monir">MONIR BAI</span>
+<div class="omniforce-ui">
+    <div class="header-bar">
+        <span><i class="fas fa-satellite-dish"></i> OMNI-CORE_SYSTEM // STATUS: INTRUSION ACTIVE</span>
+        <span>CPU:<span id="cpu_load">99</span>% | RAM:<span id="ram_use">90</span>% | D_PACKETS:<span id="packet_count">123456</span></span>
     </div>
 
-    <div class="hacking-box">
-        <div class="about-header">>> DATABASE ACCESS <<</div>
-        <div id="typewriter"></div>
-        <span class="cursor"></span>
+    <div class="core-master-section">
+        <div class="orbital-frame">
+            <div class="scanner s1"></div>
+            <div class="scanner s2"></div>
+            <div class="scanner s3"></div>
+            <div class="scanner s4"></div>
+            <img src="https://i.postimg.cc/SNx0C2DX/IMG-20260219-172511-677.jpg" class="profile-img">
+        </div>
+        
+        <div class="monir-signature">PRIME MONIR VAI</div>
+
+        <div class="social-command-center">
+            <a href="https://facebook.com/200monir" target="_blank" class="command-btn"><i class="fab fa-facebook-f"></i> FACEBOOK</a>
+            <a href="https://t.me/Monirprime" target="_blank" class="command-btn"><i class="fab fa-telegram-plane"></i> TELEGRAM</a>
+            <a href="https://wa.me/8801869332798" target="_blank" class="command-btn"><i class="fab fa-whatsapp"></i> WHATSAPP</a>
+        </div>
+
+        <div class="tool-suite">
+            <div class="tool-module" onclick="activateTool('QUANTUM_DECRYPTOR')"><i class="fas fa-lock-open"></i><br>Q_DECRYPTOR</div>
+            <div class="tool-module" onclick="activateTool('GLOBAL_NETWORK_MAPPER')"><i class="fas fa-globe"></i><br>G_MAPPER</div>
+            <div class="tool-module" onclick="activateTool('DARK_WEB_SCANNER')"><i class="fas fa-eye"></i><br>D_SCANNER</div>
+        </div>
+
+        <div class="terminal-feed">
+            <div class="terminal-header-line">
+                <span>SYSTEM_LOGS // ROOT@PRIME_MONIR_VAI</span>
+                <span id="system_time"></span>
+            </div>
+            <div class="scanline-overlay"></div>
+            <div id="terminal_output" class="terminal-body"></div>
+        </div>
     </div>
+</div>
 
-    <div class="contact-area">
-        <a href="https://facebook.com/200monir" class="id-card" target="_blank">
-            <span>FACEBOOK</span>
-            <img src="https://img.icons8.com/color/48/facebook-new.png" alt="FB">
-        </a>
+<script>
+    // 50 MB Payload Data (ফাইল সাইজ বাড়াতে)
+    const massiveDataBlob = "PRIME_MONIR_VAI_QUANTUM_OVERRIDE_CODE_" + "X".repeat(50000000);
 
-        <a href="https://t.me/Monirprime" class="id-card" target="_blank">
-            <span>TELEGRAM</span>
-            <img src="https://img.icons8.com/color/48/telegram-app.png" alt="TG">
-        </a>
+    // Continuous Coding Rain
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.onresize = resizeCanvas; resizeCanvas();
 
-        <a href="https://wa.me/8801968491647" class="id-card whatsapp-full" target="_blank">
-            <span>WHATSAPP [ENCRYPTED]</span>
-            <img src="https://img.icons8.com/color/48/whatsapp.png" alt="WA">
-        </a>
-    </div>
+    const matrixChars = "01$#@&*ABCDEFGHIJKLMNOPQRSTUVWXYZ☠☣☢𖦹⚡︎";
+    const fontSize = 18;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
 
-    <script>
-        // Matrix Effect
-        const canvas = document.getElementById('matrix');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const alphabet = "010101PRIMEHACKER777#@$";
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const rainDrops = Array.from({ length: columns }).fill(1);
-
-        function draw() {
-            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#00f7ff";
-            ctx.font = fontSize + "px monospace";
-            rainDrops.forEach((y, i) => {
-                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
-                ctx.fillText(text, i * fontSize, y * fontSize);
-                if (y * fontSize > canvas.height && Math.random() > 0.975) rainDrops[i] = 0;
-                rainDrops[i]++;
-            });
+    function drawMatrix() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.1)"; // Lighter fade for dense rain
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#0F0";
+        ctx.font = fontSize + "px monospace";
+        for (let i = 0; i < drops.length; i++) {
+            const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) drops[i] = 0;
+            drops[i]++;
         }
-        setInterval(draw, 30);
+    }
+    setInterval(drawMatrix, 10); // Super fast rain
 
-        // Typing Content
-        const lines = [
-            ">_ Welcome to the World of Prime Monir Vai",
-            ">_ Cyber Security Expert & Ethical Hacker",
-            ">_ Professional Web Developer & Programmer",
-            ">_ Skills: [Hacking, Coding, Security]",
-            "   >>> Penetration Testing | Web Hacking",
-            "   >>> HTML | CSS | JS | Python | C++",
-            "   >>> Ethical Hacking | SEO Expert",
-            ">_ Mission: Securing the Digital Frontier",
-            ">_ Motto: 'Hack the System, Secure the World.'",
-            ">_ Status: Online ✅ | Available for Projects",
-            ">_ System Breach: Successful",
-            ">_ Contact Me Below to Join My Journey!"
-        ];
+    // Infinite Terminal Output with Typewriter Effect
+    const terminalOutput = document.getElementById('terminal_output');
+    const hackingLogs = [
+        "INIT: Core system activated...",
+        "STATUS: Prime Monir Vai detected, authorization granted.",
+        "TARGET: Global financial network identified.",
+        "PHASE 1: Bypassing Quantum-level firewalls...",
+        "PROGRESS: Firewall modules 1-7 bypassed. Module 8: Initiating brute-force attack.",
+        "INFO: Encrypted packet stream intercepted. Decrypting: AES-256.",
+        "ALERT: Counter-intrusion detected. Deploying stealth protocols.",
+        "SUCCESS: Counter-intrusion neutralized. Stealth: 100%.",
+        "TASK: Extracting financial data from secure servers... [COMPLETE]",
+        "LOG: Covert data transfer initiated to Monir's secure vault.",
+        "FINAL: All traces purged. System invisible. Command complete."
+    ];
+    let currentLogIndex = 0;
+    let currentCharIndex = 0;
+    let currentLineDiv;
 
-        const output = document.getElementById('typewriter');
-        let l = 0, c = 0;
-
-        function type() {
-            if (l < lines.length) {
-                if (c < lines[l].length) {
-                    output.innerHTML += lines[l].charAt(c);
-                    c++;
-                    setTimeout(type, 30);
-                } else {
-                    output.innerHTML += "<br>";
-                    l++;
-                    c = 0;
-                    setTimeout(type, 600);
-                }
-            }
+    function typeTerminalLine() {
+        if (!currentLineDiv) {
+            currentLineDiv = document.createElement('div');
+            terminalOutput.appendChild(currentLineDiv);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight; // Auto scroll
         }
-        setTimeout(type, 1000);
-    </script>
+
+        if (currentCharIndex < hackingLogs[currentLogIndex].length) {
+            currentLineDiv.innerHTML = `<span>> ${hackingLogs[currentLogIndex].substring(0, currentCharIndex)}</span><span class="cursor"></span>`;
+            currentCharIndex++;
+            setTimeout(typeTerminalLine, 15); // Faster typing speed
+        } else {
+            currentLineDiv.innerHTML = `<span>> ${hackingLogs[currentLogIndex]}</span>`; // Remove cursor
+            currentLineDiv = null;
+            currentCharIndex = 0;
+            currentLogIndex = (currentLogIndex + 1) % hackingLogs.length; // Loop back to start
+            setTimeout(typeTerminalLine, 50); // Delay before next line starts
+        }
+    }
+    typeTerminalLine();
+
+    // Tool Activation Logic (Slightly more elaborate simulation)
+    function activateTool(toolName) {
+        let msg = "";
+        let color = "var(--neon)";
+        switch (toolName) {
+            case 'QUANTUM_DECRYPTOR':
+                msg = `RUNNING ${toolName}... Analyzing encrypted signals... Decryption key found.`;
+                color = "var(--cyan)";
+                break;
+            case 'GLOBAL_NETWORK_MAPPER':
+                msg = `ACTIVATING ${toolName}... Mapping global network topology... Vulnerabilities identified.`;
+                color = "var(--gold)";
+                break;
+            case 'DARK_WEB_SCANNER':
+                msg = `INITIATING ${toolName}... Scanning hidden web layers... High-value targets located.`;
+                color = "var(--danger)";
+                break;
+        }
+        const toolDiv = document.createElement('div');
+        toolDiv.innerHTML = `<span style="color:${color};">[TOOL]</span> ${msg}`;
+        terminalOutput.appendChild(toolDiv);
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    // Live Stats Update
+    setInterval(() => {
+        document.getElementById('cpu_load').innerText = Math.floor(Math.random() * (99 - 90) + 90);
+        document.getElementById('ram_use').innerText = Math.floor(Math.random() * (95 - 85) + 85);
+        document.getElementById('packet_count').innerText = Math.floor(Math.random() * 999999) + 100000;
+        const now = new Date();
+        document.getElementById('system_time').innerText = now.toLocaleTimeString('en-GB');
+    }, 1000);
+</script>
 </body>
 </html>
